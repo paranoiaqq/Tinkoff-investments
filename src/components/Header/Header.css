@@ -1,0 +1,18 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 64px;
+  color: rgba(0, 0, 0, 0.54);
+}
+
+.menu {
+  display: flex;
+  justify-content: space-between;
+}
+.menu__item {
+  margin-right: 24px;
+}
+.menu__item:last-child {
+  margin-right: 0;
+}
