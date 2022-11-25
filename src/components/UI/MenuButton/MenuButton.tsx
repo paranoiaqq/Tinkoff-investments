@@ -10,24 +10,40 @@ type Props = {
 function MenuButton({ children, className }: Props) {
   const [isHovered, setIsHovered] = useState(false);
   const animation = useRef<any>(null);
+  const animationReversed = useRef<any>(null);
 
   useEffect(() => {
-    if (animation.current) {
-      if (isHovered) {
-        animation.current.play();
-      } else {
-        animation.current.reverse();
-      }
-    }
-
     animation.current = anime({
       targets: ".button",
-      fontSize: 24,
-      easing: "easeInOutSine",
+      color: "rgba(0,0,0,0.8)",
+      autoplay: false,
+      duration: 250,
     });
-  }, [isHovered]);
+    animationReversed.current = anime({
+      targets: ".button",
+      color: "rgba(0, 0, 0, 0.54)",
+      autoplay: false,
+      duration: 250,
+    });
+  }, []);
 
-  return <button className={`button ${className}`}>{children}</button>;
+  const enterHandler = () => {
+    animation.current.play();
+  };
+
+  const leaveHandler = () => {
+    animationReversed.current.play();
+  };
+
+  return (
+    <button
+      onMouseEnter={enterHandler}
+      onMouseLeave={leaveHandler}
+      className={`button ${className}`}
+    >
+      {children}
+    </button>
+  );
 }
 
 export default MenuButton;
