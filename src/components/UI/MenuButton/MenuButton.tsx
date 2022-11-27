@@ -1,5 +1,5 @@
-import React, { useState, useRef, useEffect } from "react";
-import "./MenuButton.css";
+import React, { useRef, useEffect } from "react";
+import "./MenuButton.scss";
 import anime from "animejs/lib/anime.es.js";
 
 type Props = {
@@ -8,19 +8,19 @@ type Props = {
 };
 
 function MenuButton({ children, className }: Props) {
-  const [isHovered, setIsHovered] = useState(false);
   const animation = useRef<any>(null);
   const animationReversed = useRef<any>(null);
+  const buttonRef = useRef(null);
 
   useEffect(() => {
     animation.current = anime({
-      targets: ".button",
+      targets: buttonRef,
       color: "rgba(0,0,0,0.8)",
       autoplay: false,
       duration: 250,
     });
     animationReversed.current = anime({
-      targets: ".button",
+      targets: buttonRef.current,
       color: "rgba(0, 0, 0, 0.54)",
       autoplay: false,
       duration: 250,
@@ -28,10 +28,12 @@ function MenuButton({ children, className }: Props) {
   }, []);
 
   const enterHandler = () => {
+    console.log(buttonRef);
     animation.current.play();
   };
 
   const leaveHandler = () => {
+    console.log(buttonRef);
     animationReversed.current.play();
   };
 
@@ -39,7 +41,8 @@ function MenuButton({ children, className }: Props) {
     <button
       onMouseEnter={enterHandler}
       onMouseLeave={leaveHandler}
-      className={`button ${className}`}
+      ref={buttonRef}
+      className={`button ${className} `}
     >
       {children}
     </button>

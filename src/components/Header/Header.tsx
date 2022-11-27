@@ -1,5 +1,5 @@
 import React from "react";
-import "./Header.css";
+import "./Header.scss";
 import logo from "../../assets/logo.svg";
 import MenuButton from "../UI/MenuButton/MenuButton";
 import Search from "../UI/Seach/Search";
