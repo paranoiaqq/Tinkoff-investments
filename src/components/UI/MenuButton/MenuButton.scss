@@ -6,3 +6,24 @@
 .button:hover {
   cursor: pointer;
 }
+
+.button:after {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.button:hover:after {
+  opacity: 1;
+}
+
+.line {
+  // opacity: 0;
+  height: 1px;
+  width: 100%;
+  background-color: #dddfe0;
+}
+
+.clicked {
+  color: rgba(0, 0, 0, 0.8);
+}

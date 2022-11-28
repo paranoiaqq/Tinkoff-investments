@@ -14,38 +14,40 @@ function MenuButton({ children, className }: Props) {
 
   useEffect(() => {
     animation.current = anime({
-      targets: buttonRef,
+      targets: buttonRef.current,
       color: "rgba(0,0,0,0.8)",
+      // boxShadow: "inset 0 -3px 0 -1px #666",
       autoplay: false,
-      duration: 250,
+      duration: 300,
     });
     animationReversed.current = anime({
       targets: buttonRef.current,
       color: "rgba(0, 0, 0, 0.54)",
+      // boxShadow: "inset 0 -3px 0 -1px #666",
       autoplay: false,
-      duration: 250,
+      duration: 300,
     });
   }, []);
 
   const enterHandler = () => {
-    console.log(buttonRef);
     animation.current.play();
   };
 
   const leaveHandler = () => {
-    console.log(buttonRef);
     animationReversed.current.play();
   };
 
   return (
-    <button
-      onMouseEnter={enterHandler}
-      onMouseLeave={leaveHandler}
-      ref={buttonRef}
-      className={`button ${className} `}
-    >
-      {children}
-    </button>
+    <>
+      <button
+        onMouseEnter={enterHandler}
+        onMouseLeave={leaveHandler}
+        ref={buttonRef}
+        className={`button ${className} `}
+      >
+        {children}
+      </button>
+    </>
   );
 }
 
