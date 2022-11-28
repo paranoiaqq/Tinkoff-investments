@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import "./MenuButton.scss";
 import anime from "animejs/lib/anime.es.js";
 
@@ -8,6 +8,7 @@ type Props = {
 };
 
 function MenuButton({ children, className }: Props) {
+  const [isClicked, setIsClicked] = useState(false);
   const animation = useRef<any>(null);
   const animationReversed = useRef<any>(null);
   const buttonRef = useRef(null);
@@ -16,14 +17,12 @@ function MenuButton({ children, className }: Props) {
     animation.current = anime({
       targets: buttonRef.current,
       color: "rgba(0,0,0,0.8)",
-      // boxShadow: "inset 0 -3px 0 -1px #666",
       autoplay: false,
       duration: 300,
     });
     animationReversed.current = anime({
       targets: buttonRef.current,
       color: "rgba(0, 0, 0, 0.54)",
-      // boxShadow: "inset 0 -3px 0 -1px #666",
       autoplay: false,
       duration: 300,
     });
@@ -42,10 +41,14 @@ function MenuButton({ children, className }: Props) {
       <button
         onMouseEnter={enterHandler}
         onMouseLeave={leaveHandler}
+        onClick={() => {
+          setIsClicked((state) => !state);
+        }}
         ref={buttonRef}
-        className={`button ${className} `}
+        className={`button  ${className} `}
       >
         {children}
+        <div className="line" />
       </button>
     </>
   );
