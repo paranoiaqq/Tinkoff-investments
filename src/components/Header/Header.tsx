@@ -10,7 +10,9 @@ function Header() {
       <div className="logo">
         <img src={logo} alt="logo" width={150} />
       </div>
-      <Search />
+      <div className="search-block">
+        <Search />
+      </div>
       <div className="menu">
         <MenuButton className="menu__item">Портфель</MenuButton>
         <MenuButton className="menu__item">Акции</MenuButton>
