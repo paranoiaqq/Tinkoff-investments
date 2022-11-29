@@ -1,5 +1,5 @@
 import React from "react";
-import "./Search.scss";
+import "./Search.module.scss";
 import search from "../../../assets/search.svg";
 
 function Search() {

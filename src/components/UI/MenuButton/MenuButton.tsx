@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from "react";
-import "./MenuButton.scss";
+import "./MenuButton.module.scss";
 import anime from "animejs/lib/anime.es.js";
 
 type Props = {
