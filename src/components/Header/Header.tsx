@@ -1,12 +1,12 @@
 import React from "react";
-import "./Header.module.scss";
+import styles from "./Header.module.scss";
 import logo from "../../assets/logo.svg";
 import MenuButton from "../UI/MenuButton/MenuButton";
 import Search from "../UI/Seach/Search";
 
 function Header() {
   return (
-    <div className="content">
+    <div className={styles.content}>
       <div className="logo">
         <img src={logo} alt="logo" width={150} />
       </div>
