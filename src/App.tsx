@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 import Header from "./components/Header/Header";
-import PortfolioChart from "./components/PortfolioChart/PortfolioChart";
+import PortfolioPage from "./pages/PortfolioPage/PortfolioPage";
 
 function App() {
   return (
@@ -10,7 +10,7 @@ function App() {
         <Header />
       </div>
       <div className="container">
-        <PortfolioChart />
+        <PortfolioPage />
       </div>
     </>
   );
