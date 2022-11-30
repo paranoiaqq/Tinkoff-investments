@@ -1,11 +1,15 @@
 import React from "react";
-import "./Search.module.scss";
-import search from "../../../assets/search.svg";
+import styles from "./Search.module.scss";
+// import search from "../../../assets/search.svg";
 
 function Search() {
   return (
     <>
-      <input className="search" type="text" placeholder="Название или тикер" />
+      <input
+        className={styles.search}
+        type="text"
+        placeholder="Название или тикер"
+      />
     </>
   );
 }

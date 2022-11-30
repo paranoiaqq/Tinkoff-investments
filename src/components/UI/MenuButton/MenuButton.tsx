@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from "react";
-import "./MenuButton.module.scss";
+import styles from "./MenuButton.module.scss";
 import anime from "animejs/lib/anime.es.js";
 
 type Props = {
@@ -45,7 +45,7 @@ function MenuButton({ children, className }: Props) {
           setIsClicked((state) => !state);
         }}
         ref={buttonRef}
-        className={`button  ${className} `}
+        className={`${styles.button} ${className} `}
       >
         {children}
         <div className="line" />

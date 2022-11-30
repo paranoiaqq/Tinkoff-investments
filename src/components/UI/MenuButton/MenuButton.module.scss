@@ -3,6 +3,11 @@
   color: rgba(0, 0, 0, 0.54);
   height: 64px;
   position: relative;
+  margin-right: 24px;
+
+  &:last-child {
+    margin-right: 0;
+  }
 }
 
 .button:hover {

@@ -13,7 +13,7 @@ function Header() {
       <div className="search-block">
         <Search />
       </div>
-      <div className="menu">
+      <div className={styles.menu}>
         <MenuButton className="menu__item">Портфель</MenuButton>
         <MenuButton className="menu__item">Акции</MenuButton>
         <MenuButton className="menu__item">Валюты</MenuButton>
