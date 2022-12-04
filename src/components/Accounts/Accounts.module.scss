@@ -1,0 +1,28 @@
+.container {
+}
+.header {
+  &__text {
+    font-size: 20px;
+    font-weight: bold;
+  }
+}
+.inputs {
+  // display: flex;
+
+  &__currencyInput {
+  }
+
+  &__periodInput {
+  }
+}
+.accountContainer {
+  &__icon {
+  }
+
+  &__accountInfo {
+  }
+}
+.newAccount {
+  &__icon {
+  }
+}

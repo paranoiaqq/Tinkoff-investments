@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import "./PortfolioChart.module.scss";
-import { BarChart, Bar, XAxis, ResponsiveContainer } from "recharts";
+import { BarChart, Bar, XAxis, Tooltip } from "recharts";
+import anime from "animejs/lib/anime.es.js";
 
 interface CustomBarProps {
   fill?: string;
@@ -33,13 +34,16 @@ const CustomBar = ({ fill, x, y, width, height }: CustomBarProps) => {
         fill={fill}
         width={width}
         height={height}
-        clip-path="url(#round-corner)"
+        // clip-path="url(#round-corner)"
       ></rect>
     </svg>
   );
 };
 
 function PortfolioChart() {
+  const animation = useRef<any>(null);
+  const animationReversed = useRef<any>(null);
+  const popUpRef = useRef(null);
   const [data, setData] = useState([
     {
       name: "Январь",
@@ -90,20 +94,50 @@ function PortfolioChart() {
       value: "1000",
     },
   ]);
+
+  useEffect(() => {
+    animation.current = anime({
+      targets: popUpRef.current,
+
+      autoplay: false,
+      duration: 300,
+    });
+    animationReversed.current = anime({
+      targets: popUpRef.current,
+
+      autoplay: false,
+      duration: 300,
+    });
+  }, []);
+
+  const enterHandler = () => {
+    animation.current.play();
+  };
+
+  const leaveHandler = () => {
+    animationReversed.current.play();
+  };
+
   useEffect(() => {}, [data]);
 
   return (
-    <ResponsiveContainer width={816} height={276}>
-      <BarChart data={data}>
-        <XAxis dataKey="name" />
-        <Bar
-          barSize={30}
-          fill="rgb(101, 167, 224)"
-          dataKey="value"
-          shape={<CustomBar />}
-        />
-      </BarChart>
-    </ResponsiveContainer>
+    <BarChart data={data} width={816} height={276}>
+      {/* <Tooltip
+        labelStyle={{ color: "red" }}
+        offset={-50}
+        // position={{ x: 100, y: 140 }}
+        coordinate={{ x: 100, y: 140 }}
+      /> */}
+      <XAxis dataKey="name" />
+      <Bar
+        onMouseEnter={enterHandler}
+        onMouseLeave={leaveHandler}
+        barSize={30}
+        fill="rgb(101, 167, 224)"
+        dataKey="value"
+        shape={<CustomBar />}
+      />
+    </BarChart>
   );
 }
 

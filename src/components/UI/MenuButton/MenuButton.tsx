@@ -8,7 +8,7 @@ type Props = {
 };
 
 function MenuButton({ children, className }: Props) {
-  const [isClicked, setIsClicked] = useState(false);
+  // const [isClicked, setIsClicked] = useState(false);
   const animation = useRef<any>(null);
   const animationReversed = useRef<any>(null);
   const buttonRef = useRef(null);
@@ -41,9 +41,9 @@ function MenuButton({ children, className }: Props) {
       <button
         onMouseEnter={enterHandler}
         onMouseLeave={leaveHandler}
-        onClick={() => {
-          setIsClicked((state) => !state);
-        }}
+        // onClick={() => {
+        //   setIsClicked((state) => !state);
+        // }}
         ref={buttonRef}
         className={`${styles.button} ${className} `}
       >
